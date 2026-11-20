@@ -351319,6 +351319,23 @@ Kiosco BLF
         
     
             tile_layer_f5eaf34c7dec83585cc68b5008f82fa9.addTo(map_6dfd2894452751f5fdce093fbee02b28);
+
+            // Selector Mapa / Satélite (Esri, sin API key)
+            var capa_satelite = L.layerGroup([
+                L.tileLayer(
+                    "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+                    {"maxZoom": 20, "maxNativeZoom": 19, "attribution": "Imágenes \u0026copy; Esri, Maxar, Earthstar Geographics"}
+                ),
+                L.tileLayer(
+                    "https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}",
+                    {"maxZoom": 20, "maxNativeZoom": 19}
+                )
+            ]);
+            L.control.layers(
+                {"Mapa": tile_layer_f5eaf34c7dec83585cc68b5008f82fa9, "Satélite": capa_satelite},
+                null,
+                {"position": "topright", "collapsed": false}
+            ).addTo(map_6dfd2894452751f5fdce093fbee02b28);
         
     
             geo_json_491fccced23c0f4cbee95fd69398a1bb.addTo(map_6dfd2894452751f5fdce093fbee02b28);
